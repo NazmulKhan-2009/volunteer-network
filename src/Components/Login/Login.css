@@ -1,0 +1,129 @@
+
+
+input, button{
+  border:none;
+  outline: none;
+  background: none;
+}
+h2{
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+}
+
+label{
+  display: block;
+  width: 100%;
+  margin: 25px auto 0;
+  /* text-align: center; */
+}
+
+label span{
+  font-size: 14px;
+  font-weight: 600;
+  color: #505f75;
+  /* text-transform: lowercase; */
+}
+.my-form{
+  border: 2px solid lightgray;
+  min-height: 60vh;
+  border-radius: 10px;
+}
+.my-form h4, span{
+  text-align: center;
+  line-height:2.1rem;
+  
+}
+
+.my-form input{
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  font-size: 16px;
+  /* padding-bottom: 5px; */
+  border-bottom: 1px solid rgba(109, 93, 93, 0.4);
+  /* text-align: center; */
+  font-family: 'Nunito', sans-serif; 
+}
+
+.my-form span{
+  /* display: block; */
+  margin: 0 auto;
+  width: 100%;
+  height: 36px;
+  border-radius: 30px;
+  color: black;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.submit{
+  margin-top: 40px;
+  margin-bottom: 30px;
+  height: 50px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
+  background: #F9A51A;
+}
+
+.submit:hover{
+  background: -webkit-linear-gradient(left, #b224ef, #7579ff);
+}
+
+.forgot-pass{
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0c0101;
+  cursor: pointer;
+}
+
+.forgot-pass:hover{
+  color: red;
+}
+.sign-in{
+  padding-top: 65px;
+  display: flex;
+  -webkit-transition-timing-function:ease-out;
+          transition-timing-function:ease-out;
+}
+.sign-in-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+.facebook-btn,
+.google-btn
+{
+  display: flex;
+  border: 2px solid lightgrey;
+  padding:7px 10px;
+  border-radius:50px;
+  color: black;
+  margin-top: 10px;
+  cursor: pointer;
+  outline: none;
+}
+.facebook-btn button{
+outline: none;
+border: none;
+}
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #3F90FC;
+}
+/* .social-btn{
+  margin-top: 20%;
+} */
+
