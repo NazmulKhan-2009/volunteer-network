@@ -11,7 +11,7 @@ const [event, setEvent]=useState([])
 
 
 useEffect(()=>{
-fetch("http://localhost:5000/eventenrolled?email="+loggedInuser.email)
+fetch("https://damp-ridge-34013.herokuapp.com/eventenrolled?email="+loggedInuser.email)
 .then(res=>res.json())
 // .then(data=>console.log(data[3]))
 .then(data=>setEvent(data))
@@ -19,7 +19,7 @@ fetch("http://localhost:5000/eventenrolled?email="+loggedInuser.email)
 
 const cancel=(event, id)=>{
 console.log(event.target);
-fetch(`http://localhost:5000/delete/${id}` ,{
+fetch(`https://damp-ridge-34013.herokuapp.com/delete/${id}` ,{
   method:'DELETE',
 
 })
