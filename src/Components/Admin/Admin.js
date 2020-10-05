@@ -18,7 +18,7 @@ const onSubmit=(data)=>{
 
 
 
-  fetch("http://localhost:5000/addEvents",{
+  fetch("https://damp-ridge-34013.herokuapp.com/addEvents",{
     method: "POST",
     headers:{ 
       "Content-Type" : "application/json"

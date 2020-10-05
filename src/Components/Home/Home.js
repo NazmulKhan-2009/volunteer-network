@@ -22,7 +22,7 @@ const Home = () => {
     })
   }
 useEffect(()=>{
-  fetch("http://localhost:5000/event")
+  fetch("https://damp-ridge-34013.herokuapp.com/event")
   .then(res=>res.json())
   .then(data=>setEventType(data))
 },[])

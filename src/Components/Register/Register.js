@@ -11,18 +11,13 @@ const Register = () => {
   const { register, handleSubmit, watch, errors } = useForm();
   const [loggedInuser, setloggedInUser]=useContext(userContext)
   const {eventsKey}=useParams()
-  // console.log(eventsKey);
-  // console.log( eventType)
-  // const selectedEvents= eventType.find(event=>event.key===eventsKey)
  
-  // console.log( selectedEvents)
 
   let history = useHistory();
 
   const onSubmit=(data)=>{
     
-    // const details={...loggedInuser,event:data, image:events.image}
-    // const details={...loggedInuser,...data,...events}
+    
     const details={
       email:loggedInuser.email,
       name:loggedInuser.name,
@@ -33,7 +28,7 @@ const Register = () => {
     }
     console.log( details)
 
-    fetch("http://localhost:5000/enrolledevents",{
+    fetch("https://damp-ridge-34013.herokuapp.com/enrolledevents",{
     method: 'POST',
     headers: {
       "Content-Type":"application/json"
@@ -56,7 +51,7 @@ const Register = () => {
     
 }
 useEffect(()=>{
-  fetch("http://localhost:5000/event")
+  fetch("https://damp-ridge-34013.herokuapp.com/event")
   .then(res=>res.json())
   // .then(data=>setSelectedEvents(data))
   // .then(data=>console.log(data[eventsKey]))
