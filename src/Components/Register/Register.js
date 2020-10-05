@@ -1,9 +1,75 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { userContext } from '../../App';
+// import { eventType } from '../../FakeData';
 import logo from "../../logos/Group 1329.png"
 const Register = () => {
+  const [events, setEvents]=useState([])
+  // console.log(selectedEvents )
+  const {regSuccess, setRegSuccess}=useState(null)
+  const { register, handleSubmit, watch, errors } = useForm();
   const [loggedInuser, setloggedInUser]=useContext(userContext)
+  const {eventsKey}=useParams()
+  // console.log(eventsKey);
+  // console.log( eventType)
+  // const selectedEvents= eventType.find(event=>event.key===eventsKey)
+ 
+  // console.log( selectedEvents)
+
+  let history = useHistory();
+
+  const onSubmit=(data)=>{
+    
+    // const details={...loggedInuser,event:data, image:events.image}
+    // const details={...loggedInuser,...data,...events}
+    const details={
+      email:loggedInuser.email,
+      name:loggedInuser.name,
+      date:data.date,
+      title:data.Event,
+      task:data.Task,
+      image:events.image
+    }
+    console.log( details)
+
+    fetch("http://localhost:5000/enrolledevents",{
+    method: 'POST',
+    headers: {
+      "Content-Type":"application/json"
+    },
+    body: JSON.stringify(details)
+  })
+  .then(res=>res.json())
+  .then(data=>{ console.log(data)
+    // if(data){
+    //   console.log( "data grabbed")
+    //   // processOrder()
+    //   //   alert("Your Order is succesfully")
+    // }
+  })
+
+    history.push("/dashboard");
+    
+      
+    
+    
+}
+useEffect(()=>{
+  fetch("http://localhost:5000/event")
+  .then(res=>res.json())
+  // .then(data=>setSelectedEvents(data))
+  // .then(data=>console.log(data[eventsKey]))
+  .then(data=>setEvents(data[eventsKey]))
+
+},[eventsKey])
+      
+// const events= selectedEvents[eventsKey]
+// const events= eventType[eventsKey]
+// console.log( events)
+
+
+
   return (
     <div className='container nav_bg sign-in-wrapper'>
       <div className='row '>
@@ -15,44 +81,45 @@ const Register = () => {
         <h4>Register As Volunteer</h4>
 
         
-            <form >
+            <form onSubmit={handleSubmit(onSubmit)}>
             
              
             <label>
-                <span>First Name</span>
-                <input type="text" name="firstname" />
+                <span>Full Name</span>
+                <input type="text" name="Fullname" defaultValue={loggedInuser.name}  ref={register({ required: true })}/>
               </label>
-            
-            
+                      
               <label>
-                <span>Last Name</span>
-                <input type="text" name="lastname" />
-              </label>
-            
-            
-
-            
-            
-              <label>
-                <span>Email Address</span>
-                <input type="email" name="email"  required/>
+                <span>User Name or email</span>
+                <input type="email" name="email" defaultValue={loggedInuser.email}  ref={register({ required: true })}/>
               </label>
             
 
               <label>
-                <span>Password</span>
-                <input type="password" name="password"  required/>
+                <span>Date</span>
+                <input type="date" name="date"  ref={register({ required: true })}/>
               </label>
             
               <label>
-                <span>Confirm Password</span>
-                <input type="Password" name="retype"/>
+                <span>Description</span>
+                <input type="text" name="Task" ref={register({ required: true })}/>
+              </label>
+
+
+              <label>
+                <span>Events Name</span>
+                <input type="text" name="Event" defaultValue={events.title} ref={register({ required: true })}/>
               </label>
              
               
-              
               <input type="submit" value="Registration"/>
+              
+              
             </form>
+
+            
+
+            
             
               
              
